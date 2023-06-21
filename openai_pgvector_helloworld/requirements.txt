@@ -1,0 +1,7 @@
+openai
+pandas
+numpy
+tiktoken
+psycopg2
+pgvector
+python-dotenv
