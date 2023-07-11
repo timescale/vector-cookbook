@@ -1,7 +1,9 @@
 # Timescale Vector Cookbook
 A collection of recipes to build applications with LLMs using pgvector with PostgreSQL and Timescale.
 
-Sign up for a free trial cloud PostgreSQL database to use to work thru the examples in this repo: [timescale.com/ai](https://www.timescale.com/ai)
+Learn more about building LLM applications with PostgreSQL as a vector database: [timescale.com/ai](https://www.timescale.com/ai)
+
+Sign up for a [free trial cloud PostgreSQL database](https://console.cloud.timescale.com/signup) to use to work thru the examples in this repo.
 
 ## Using PostgreSQL and pgvector as a vector database
 - [Create, store and query OpenAI embeddings with PostgreSQL and pgvector](https://github.com/timescale/vector-cookbook/tree/main/openai_pgvector_helloworld)
