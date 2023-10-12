@@ -1,0 +1,9 @@
+altair
+numpy
+pandas
+pydeck
+streamlit
+llama_index >= 0.8.37
+timescale_vector >= 0.0.2
+GitPython
+psycopg2-binary
