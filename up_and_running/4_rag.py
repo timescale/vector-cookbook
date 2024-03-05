@@ -25,7 +25,7 @@ openai.api_key  = os.environ['OPENAI_API_KEY']
 client = openai.OpenAI()
 
 
-def similarity_search(question: str, since: datetime, k=5) -> list[str]:
+def similarity_search(question: str, k=5) -> list[str]:
     # turn the question into an embedding/vector using the openai client
     embedding = client.embeddings.create(input = [question], model="text-embedding-3-small").data[0].embedding
     matches = []
@@ -34,11 +34,10 @@ def similarity_search(question: str, since: datetime, k=5) -> list[str]:
         with con.cursor() as cur:
             cur.execute("""
                 select content
-                from commit_history 
-                where "date" >= %s::timestamptz     -- time based filtering 
+                from commit_history
                 order by embedding <=> %s::vector   -- order by semantic similarity
                 limit %s                            -- only return the k most similar
-                """, (since, embedding, k))
+                """, (embedding, k))
             for row in cur.fetchall():
                 matches.append(row[0])
     return matches
@@ -76,11 +75,9 @@ if __name__ == "__main__":
     while True:
         # 1. get the user's question
         question = click.prompt("Enter your question", type=str)
-        since = click.prompt("Only find results more recent than (YYYY-MM-DD)", type=str)
-        since = datetime.strptime(since, "%Y-%m-%d")
         # 2. do a similarity search for git commits relevant to the question
         click.echo("Searching...")
-        matches = similarity_search(question, since)
+        matches = similarity_search(question)
         click.echo(f"Found {len(matches)} matches.")
         # 3. provide the relevant commits in a prompt and ask the GPT for a response
         click.echo("Generating response...")
