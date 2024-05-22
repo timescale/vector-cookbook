@@ -11,7 +11,7 @@ Timescale Vector enables you to power AI applications using PostgreSQL to store 
 - [Timescale Vector LangChain Integration](https://python.langchain.com/docs/integrations/vectorstores/timescalevector)
 - [Timescale Vector LlamaIndex Integration](https://gpt-index.readthedocs.io/en/stable/examples/vector_stores/Timescalevector.html)
 - [Timescale Vector Python Client Library](https://github.com/timescale/python-vector)
-- [Timescale Vector Python Tutorial](https://timescale.github.io/python-vector/tsv_python_getting_started_tutorial.html)
+- [Timescale Vector Python Tutorial](https://github.com/timescale/python-vector/blob/main/nbs/tsv_python_getting_started_tutorial.ipynb)
 
 ## Sample Applications
 - [TSV Time Machine](https://github.com/timescale/vector-cookbook/tree/main/tsv_timemachine): Chat with git the commit history of any repo. Stack: LlamaIndex, Streamlit, Timescale Vector (PostgreSQL), Python. [Live demo](https://pg-timemachine.streamlit.app/TimeMachine_Demo)
