@@ -1,0 +1,44 @@
+version: "3"
+services:
+  pg_vector_postgres_dev:
+    image: timescale/timescaledb-ha:pg16
+    restart: unless-stopped
+    container_name: pgvector
+    # ports:
+    #   - "5442:5442"
+    volumes:
+      - ./volumes/postgres:/var/lib/postgresql/data
+    env_file:
+      - .env
+    networks:
+      pg_vector_dev:
+        ipv4_address: 192.168.51.12
+
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    # ports:
+    #   - "11434:11434"
+    volumes:
+      # - ./volumes/ollama/:/root/.ollama/
+      - /usr/share/ollama/.ollama/:/root/.ollama/
+    restart: always
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ['0']
+              capabilities: [gpu]
+    networks:
+      pg_vector_dev:
+        ipv4_address: 192.168.51.13
+
+networks:
+  pg_vector_dev:
+    driver: bridge
+    ipam:
+        driver: default
+        config:
+            - 
+              subnet: 192.168.51.0/24

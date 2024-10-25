@@ -1,0 +1,3 @@
+.venv
+volumes/
+blog_data_and_embeddings*
